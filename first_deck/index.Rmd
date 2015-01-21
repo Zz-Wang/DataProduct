@@ -11,16 +11,51 @@ mode        : selfcontained # {standalone, draft}
 knit        : slidify::knit2slides
 ---
 
-## Read-And-Delete
+## Ideas
 
-1. Edit YAML front matter
-2. Write using R Markdown
-3. Use an empty line followed by three dashes to separate slides!
+1. Generally predict the mpg in Auto Dataset using number of features you choose
+2. Input: Number of features you want to choose
+3. Output: estimation on multilinear regression based on chosen features
 
 --- .class #id 
 
-## Slide 2
+## Feature Selection
 
-Test slide 2
+Regression on each feature regarding to mpg and order them regarding the p-value.  
 
+--- .class #id 
 
+## Illustration on THREE feature example
+R codes are hiden and results are hiden. 
+```{r, echo=FALSE, results='hide', warning=FALSE, error=FALSE, message=FALSE, tidy=TRUE}
+###For example, we want most important 3 features
+library(ISLR)
+attach(Auto)
+Auto <- Auto[-9]
+topn <- function(x, y){
+        p <-ncol(x)
+        colnames(x) <- c("cylinders", "displacement", "horsepower", "weight", 
+                         "acceleration", "year", "origin")
+        pvalues <- numeric(p)
+        for(i in seq_len(p)){
+                fit <- lm(y ~ x[, i])
+                summ <- summary(fit)
+                pvalues[i] <- summ$coefficients[2, 4]
+                }
+        ord <- order(pvalues)
+        N <- 3
+        ord <- ord[1:N]
+        xn <- x[, ord]
+        fit <- lm(y ~ xn)
+        return(coef(fit))
+}
+x <- cbind(Auto$cylinders, Auto$displacement, Auto$horsepower, Auto$weight, 
+           Auto$acceleration, Auto$year, Auto$origin)
+print(topn(x, Auto$mpg))
+```
+
+--- .class #id 
+
+## Further
+1. Maybe some other ways to select features?
+2. Maybe apply to some other datasets?

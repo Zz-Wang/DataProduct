@@ -11,16 +11,26 @@ mode        : selfcontained # {standalone, draft}
 knit        : slidify::knit2slides
 ---
 
-## Read-And-Delete
+## Ideas
 
-1. Edit YAML front matter
-2. Write using R Markdown
-3. Use an empty line followed by three dashes to separate slides!
+1. Generally predict the mpg in Auto Dataset using number of features you choose
+2. Input: Number of features you want to choose
+3. Output: estimation on multilinear regression based on chosen features
 
 --- .class #id 
 
-## Slide 2
+## Feature Selection
 
-Test slide 2
+Regression on each feature regarding to mpg and order them regarding the p-value.  
+
+--- .class #id 
+
+## Illustration on THREE feature example
+R codes are hiden and results are hiden. 
 
 
+--- .class #id 
+
+## Further
+1. Maybe some other ways to select features?
+2. Maybe apply to some other datasets?
