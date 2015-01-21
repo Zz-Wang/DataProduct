@@ -4,7 +4,7 @@
 
 Instructions
 
-- Clone the code using 'git clone https://github.com/Zz-Wang/DataProduct/.git YOURDIRECTORY'
+- Clone the code using 'git clone https://github.com/Zz-Wang/DataProduct.git YOURDIRECTORY'
 
 - Load your RStudio
 
